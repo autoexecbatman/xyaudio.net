@@ -3,347 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XY Audio - Professional System Audio Analyzer</title>
-    <meta name="description" content="SoundAnalyzer by XY Audio - Professional real-time spectrum analyzer with Windows system audio capture. VST3, AU, Standalone formats.">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        main {
-            margin-top: 80px;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #ff6b6b;
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
-        }
-
-        .features {
-            background: white;
-            padding: 4rem 0;
-        }
-
-        .features h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-
-        .pricing {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 4rem 0;
-            color: white;
-            text-align: center;
-        }
-
-        .pricing h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .price-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 3rem;
-            max-width: 400px;
-            margin: 0 auto;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .price {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .price-note {
-            opacity: 0.8;
-            margin-bottom: 2rem;
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 1rem;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .social-links a:hover {
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .footer-content {
-                text-align: center;
-            }
-        }
-    </style>
+    <title>SoundAnalyzer by XY Audio - Professional System Audio Analyzer</title>
+    <meta name="description" content="Professional real-time spectrum analyzer with Windows system audio capture. FFT analysis, peak hold, smoothing controls.">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="#" class="logo">XY Audio</a>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-xy">XY</span>
+                <span class="brand-audio">Audio</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#specifications" class="nav-link">Specs</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#download" class="nav-link">Download</a>
+            </div>
+        </div>
+    </nav>
 
     <main>
         <section class="hero">
-            <div class="container">
-                <h1>Professional System Audio Analyzer</h1>
-                <p>Real-time spectrum analysis with Windows system audio capture</p>
-                <a href="#pricing" class="cta-button">Get SoundAnalyzer - $39</a>
-            </div>
-        </section>
-
-        <section class="features" id="features">
-            <div class="container">
-                <h2>Why Choose SoundAnalyzer?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🔊</div>
-                        <h3>System Audio Capture</h3>
-                        <p>Monitor any application's audio output in real-time using Windows WASAPI technology. Perfect for content creators and audio professionals.</p>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="title-primary">SoundAnalyzer</span>
+                        <span class="title-secondary">Professional System Audio Analyzer</span>
+                    </h1>
+                    <p class="hero-description">
+                        Real-time FFT spectrum analysis with Windows WASAPI system audio capture. 
+                        Professional-grade monitoring for audio engineers, content creators, and musicians.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#download" class="cta-button primary">
+                            Download - $39
+                            <span class="cta-subtitle">Launch Price</span>
+                        </a>
+                        <a href="#features" class="cta-button secondary">View Features</a>
                     </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Professional Analysis</h3>
-                        <p>Real-time FFT spectrum analysis with multiple sizes (1024-16384 points), windowing functions, and peak hold functionality.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🎛️</div>
-                        <h3>Multi-Format Support</h3>
-                        <p>Works as VST3, Audio Unit, and Standalone application. Compatible with Pro Tools, Logic Pro, Cubase, Reaper, and all major DAWs.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3>Low CPU Usage</h3>
-                        <p>Optimized for professional use with minimal system impact. Reliable performance even in complex production environments.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">🎚️</div>
-                        <h3>Advanced Controls</h3>
-                        <p>Customizable smoothing, multiple window types, logarithmic frequency scaling, and adjustable dB range for precise analysis.</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">💻</div>
-                        <h3>Cross-Platform</h3>
-                        <p>Available for Windows with macOS support. Professional-grade software trusted by audio engineers worldwide.</p>
+                </div>
+                <div class="hero-visual">
+                    <div class="analyzer-mockup">
+                        <div class="mockup-header">
+                            <span class="window-controls">
+                                <span class="control minimize"></span>
+                                <span class="control maximize"></span>
+                                <span class="control close"></span>
+                            </span>
+                            <span class="window-title">SoundAnalyzer</span>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="spectrum-display">
+                                <div class="frequency-grid">
+                                    <div class="grid-line" style="left: 10%"></div>
+                                    <div class="grid-line" style="left: 25%"></div>
+                                    <div class="grid-line" style="left: 50%"></div>
+                                    <div class="grid-line" style="left: 75%"></div>
+                                    <div class="grid-line" style="left: 90%"></div>
+                                </div>
+                                <div class="spectrum-curve">
+                                    <svg viewBox="0 0 400 200" class="spectrum-svg">
+                                        <path d="M0,180 Q50,160 100,140 T200,120 Q250,100 300,80 Q350,90 400,85" 
+                                              fill="none" 
+                                              stroke="var(--spectrum-color)" 
+                                              stroke-width="2"/>
+                                        <path d="M0,180 Q50,160 100,140 T200,120 Q250,100 300,80 Q350,90 400,85 L400,200 L0,200 Z" 
+                                              fill="url(#spectrumGradient)" 
+                                              opacity="0.3"/>
+                                        <defs>
+                                            <linearGradient id="spectrumGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#ff8c42;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:#ff8c42;stop-opacity:0" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div class="frequency-labels">
+                                    <span>20</span>
+                                    <span>100</span>
+                                    <span>1k</span>
+                                    <span>10k</span>
+                                    <span>20k</span>
+                                </div>
+                            </div>
+                            <div class="controls-panel">
+                                <div class="control-group">
+                                    <label>FFT Size</label>
+                                    <select class="control-select">
+                                        <option>2048</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label>Window</label>
+                                    <select class="control-select">
+                                        <option>Hann</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label>Audio Source</label>
+                                    <select class="control-select">
+                                        <option>System Audio</option>
+                                    </select>
+                                </div>
+                                <div class="control-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        Peak Hold
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        Log Freq
+                                    </label>
+                                </div>
+                                <div class="control-group">
+                                    <label>Smoothing</label>
+                                    <div class="slider-container">
+                                        <input type="range" class="slider" min="0" max="100" value="50">
+                                        <span class="slider-value">0.50</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label>dB Range</label>
+                                    <div class="slider-container">
+                                        <input type="range" class="slider" min="60" max="200" value="144">
+                                        <span class="slider-value">144.0 dB</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="pricing" id="pricing">
+        <section id="features" class="features">
             <div class="container">
-                <h2>Get Started Today</h2>
-                <div class="price-box">
-                    <div class="price">$39</div>
-                    <div class="price-note">Launch Price - Limited Time</div>
-                    <p>✓ VST3, AU, Standalone formats<br>
-                    ✓ System audio capture<br>
-                    ✓ Professional spectrum analysis<br>
-                    ✓ Free updates<br>
-                    ✓ Email support</p>
-                    <br>
-                    <a href="#" class="cta-button">Download Now</a>
+                <h2 class="section-title">Professional Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔊</div>
+                        <h3>System Audio Capture</h3>
+                        <p>Monitor any Windows application's audio output in real-time using WASAPI loopback technology. Perfect for streaming, content creation, and system monitoring.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Real-Time FFT Analysis</h3>
+                        <p>Professional spectrum analysis with selectable FFT sizes (1024-16384 points), multiple windowing functions, and logarithmic frequency scaling.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎛️</div>
+                        <h3>Advanced Controls</h3>
+                        <p>Peak hold functionality, smoothing controls, adjustable dB range, and professional-grade visualization for detailed audio analysis.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔌</div>
+                        <h3>Multi-Format Plugin</h3>
+                        <p>Available as VST3, Audio Unit, and Standalone application. Compatible with Pro Tools, Logic Pro, Cubase, Reaper, and all major DAWs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Optimized Performance</h3>
+                        <p>Low CPU usage with efficient processing algorithms. Designed for professional use in demanding production environments.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Professional UI</h3>
+                        <p>Dark theme interface optimized for studio environments. Clear spectrum visualization with professional-grade metering and controls.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="specifications" class="specifications">
+            <div class="container">
+                <h2 class="section-title">Technical Specifications</h2>
+                <div class="specs-grid">
+                    <div class="spec-category">
+                        <h3>Audio Processing</h3>
+                        <ul>
+                            <li>FFT Sizes: 1024, 2048, 4096, 8192, 16384 points</li>
+                            <li>Sample Rates: 44.1kHz, 48kHz, 88.2kHz, 96kHz, 192kHz</li>
+                            <li>Bit Depth: 16, 24, 32-bit float</li>
+                            <li>Windowing: Hann, Hamming, Blackman, Rectangular</li>
+                            <li>Frequency Response: 20Hz - 20kHz+</li>
+                        </ul>
+                    </div>
+                    <div class="spec-category">
+                        <h3>System Requirements</h3>
+                        <ul>
+                            <li>Windows 10/11 (64-bit)</li>
+                            <li>Intel i5 or AMD equivalent</li>
+                            <li>4GB RAM minimum, 8GB recommended</li>
+                            <li>WASAPI-compatible audio interface</li>
+                            <li>VST3/AU compatible DAW (for plugin use)</li>
+                        </ul>
+                    </div>
+                    <div class="spec-category">
+                        <h3>Plugin Formats</h3>
+                        <ul>
+                            <li>VST3 (64-bit)</li>
+                            <li>Audio Unit (macOS)</li>
+                            <li>Standalone Application</li>
+                            <li>JUCE Framework Based</li>
+                            <li>Cross-platform Compatible</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <h2 class="section-title">Get SoundAnalyzer</h2>
+                <div class="pricing-card">
+                    <div class="price-header">
+                        <h3>SoundAnalyzer</h3>
+                        <div class="price">
+                            <span class="price-amount">$39</span>
+                            <span class="price-period">Launch Price</span>
+                        </div>
+                        <p class="price-note">Limited time offer - Regular price $59</p>
+                    </div>
+                    <div class="price-features">
+                        <ul>
+                            <li>✓ System audio capture (WASAPI)</li>
+                            <li>✓ Real-time FFT spectrum analysis</li>
+                            <li>✓ VST3, AU, and Standalone formats</li>
+                            <li>✓ Professional peak hold and smoothing</li>
+                            <li>✓ Multiple FFT sizes and windowing</li>
+                            <li>✓ Dark theme professional UI</li>
+                            <li>✓ Free updates for 1 year</li>
+                            <li>✓ Email support</li>
+                        </ul>
+                    </div>
+                    <div class="price-action">
+                        <a href="#download" class="pricing-button">Download Now</a>
+                        <p class="money-back">30-day money-back guarantee</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="download">
+            <div class="container">
+                <h2 class="section-title">Download SoundAnalyzer</h2>
+                <div class="download-content">
+                    <div class="download-info">
+                        <h3>Ready to start analyzing?</h3>
+                        <p>Get instant access to SoundAnalyzer with secure payment processing through Gumroad. Download links delivered immediately after purchase.</p>
+                        <div class="download-features">
+                            <div class="download-feature">
+                                <span class="feature-check">✓</span>
+                                <span>Instant download after payment</span>
+                            </div>
+                            <div class="download-feature">
+                                <span class="feature-check">✓</span>
+                                <span>Windows installer included</span>
+                            </div>
+                            <div class="download-feature">
+                                <span class="feature-check">✓</span>
+                                <span>User manual (PDF)</span>
+                            </div>
+                            <div class="download-feature">
+                                <span class="feature-check">✓</span>
+                                <span>Email support included</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="download-action">
+                        <div class="download-card">
+                            <h4>SoundAnalyzer v1.0</h4>
+                            <div class="download-price">$39</div>
+                            <a href="#" class="download-button" id="gumroad-button">
+                                Buy & Download
+                                <span class="button-subtitle">Secure Payment via Gumroad</span>
+                            </a>
+                            <p class="download-note">Requires Windows 10/11. macOS version coming soon.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer id="contact">
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div>
-                    <p>&copy; 2025 XY Audio. All rights reserved.</p>
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="brand-xy">XY</span>
+                        <span class="brand-audio">Audio</span>
+                    </div>
+                    <p>Professional audio software for creators and engineers.</p>
                 </div>
-                <div>
-                    <p>Contact: <a href="mailto:contact@xyaudio.net" style="color: #667eea;">contact@xyaudio.net</a></p>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#specifications">Specifications</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#download">Download</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="mailto:support@xyaudio.net">Email Support</a>
+                        <a href="#">User Manual</a>
+                        <a href="#">System Requirements</a>
+                        <a href="#">FAQ</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="#">Twitter</a>
+                        <a href="#">YouTube</a>
+                        <a href="#">Instagram</a>
+                        <a href="mailto:contact@xyaudio.net">Contact</a>
+                    </div>
                 </div>
-                <div class="social-links">
-                    <a href="#">𝕏</a>
-                    <a href="#">📷</a>
-                    <a href="#">▶️</a>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 XY Audio. All rights reserved.</p>
+                <p>SoundAnalyzer is a trademark of XY Audio.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Header background opacity on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.1)';
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
