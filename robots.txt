@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://autoexecbatman.github.io/xyaudio.net/sitemap.xml
