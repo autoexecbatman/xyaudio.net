@@ -25,111 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Interactive sliders in mockup
-    const sliders = document.querySelectorAll('.slider');
-    sliders.forEach(slider => {
-        const valueDisplay = slider.nextElementSibling;
-        
-        slider.addEventListener('input', function() {
-            const value = this.value;
-            const max = this.max;
-            const min = this.min;
-            
-            // Update value display
-            if (this.classList.contains('slider') && valueDisplay) {
-                if (slider.min == "0" && slider.max == "100") {
-                    // Smoothing slider (0.00 - 1.00)
-                    valueDisplay.textContent = (value / 100).toFixed(2);
-                } else {
-                    // dB Range slider
-                    valueDisplay.textContent = value + '.0 dB';
-                }
-            }
-            
-            // Animate spectrum curve based on smoothing
-            animateSpectrum(value);
-        });
-    });
 
-    // Animate spectrum curve
-    function animateSpectrum(intensity) {
-        const spectrumPath = document.querySelector('.spectrum-svg path');
-        if (spectrumPath) {
-            const baseIntensity = intensity / 100;
-            const newPath = generateSpectrumPath(baseIntensity);
-            spectrumPath.setAttribute('d', newPath);
-        }
-    }
-
-    // Generate dynamic spectrum path
-    function generateSpectrumPath(intensity) {
-        const points = [];
-        const width = 400;
-        const height = 200;
-        const numPoints = 20;
-        
-        for (let i = 0; i <= numPoints; i++) {
-            const x = (i / numPoints) * width;
-            const baseY = height - 20;
-            const variation = Math.sin(i * 0.5) * 60 * intensity;
-            const randomVariation = (Math.random() - 0.5) * 20 * intensity;
-            const y = baseY - 40 - variation - randomVariation;
-            points.push({x, y: Math.max(20, Math.min(height - 20, y))});
-        }
-        
-        // Create smooth curve through points
-        let path = `M${points[0].x},${points[0].y}`;
-        for (let i = 1; i < points.length; i++) {
-            const prev = points[i - 1];
-            const curr = points[i];
-            const cpx = (prev.x + curr.x) / 2;
-            path += ` Q${cpx},${prev.y} ${curr.x},${curr.y}`;
-        }
-        
-        return path;
-    }
-
-    // Checkbox interactions
-    const checkboxes = document.querySelectorAll('.checkbox-label input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            // Visual feedback for checkbox state changes
-            const spectrumDisplay = document.querySelector('.spectrum-display');
-            if (this.checked) {
-                spectrumDisplay.style.borderColor = '#ff8c42';
-            } else {
-                spectrumDisplay.style.borderColor = '#404040';
-            }
-            
-            // Animate based on peak hold state
-            if (this.parentElement.textContent.includes('Peak Hold')) {
-                togglePeakHold(this.checked);
-            }
-        });
-    });
-
-    // Peak hold animation
-    function togglePeakHold(enabled) {
-        const spectrumCurve = document.querySelector('.spectrum-curve');
-        if (enabled) {
-            spectrumCurve.style.animationDuration = '1s';
-        } else {
-            spectrumCurve.style.animationDuration = '3s';
-        }
-    }
-
-    // Dropdown interactions
-    const selects = document.querySelectorAll('.control-select');
-    selects.forEach(select => {
-        select.addEventListener('change', function() {
-            // Visual feedback for parameter changes
-            const mockupContent = document.querySelector('.mockup-content');
-            mockupContent.style.transform = 'scale(1.02)';
-            setTimeout(() => {
-                mockupContent.style.transform = 'scale(1)';
-            }, 200);
-        });
-    });
 
     // Gumroad button (placeholder for actual integration)
     const gumroadButton = document.getElementById('gumroad-button');
@@ -178,16 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(element);
     });
 
-    // Initialize spectrum animation
-    setTimeout(() => {
-        animateSpectrum(50); // Start with medium intensity
-    }, 1000);
 
-    // Auto-update spectrum animation
-    setInterval(() => {
-        const randomIntensity = 30 + Math.random() * 40; // 30-70% intensity
-        animateSpectrum(randomIntensity);
-    }, 3000);
 
     // Add dynamic hover effects to feature cards
     const featureCards = document.querySelectorAll('.feature-card');
