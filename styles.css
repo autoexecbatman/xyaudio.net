@@ -5,17 +5,19 @@
     --bg-primary: #1a1a1a;
     --bg-secondary: #2d2d30;
     --bg-tertiary: #3e3e42;
-    --spectrum-color: #ff8c42;
-    --spectrum-glow: rgba(255, 140, 66, 0.3);
+    --spectrum-color: #ff4242;
+    --spectrum-glow: rgba(255, 66, 66, 0.3);
+    --spectrum-secondary: #2d8f5d;
+    --spectrum-secondary-glow: rgba(45, 143, 93, 0.3);
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
     --text-muted: #808080;
-    --accent-primary: #ff8c42;
-    --accent-secondary: #ff6b42;
+    --accent-primary: #ff4242;
+    --accent-secondary: #2d8f5d;
     --grid-color: #404040;
     --border-color: #505050;
-    --success-color: #4caf50;
-    --warning-color: #ffa726;
+    --success-color: #2d8f5d;
+    --warning-color: #ff4242;
 }
 
 * {
@@ -105,6 +107,38 @@ body {
     align-items: center;
 }
 
+.hero-screenshot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screenshot-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    max-width: 100%;
+}
+
+.screenshot-wrapper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px var(--spectrum-glow);
+}
+
+.hero-screenshot-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-screenshot-image:hover {
+    transform: scale(1.02);
+}
+
 .hero-title {
     margin-bottom: 1.5rem;
 }
@@ -151,24 +185,24 @@ body {
 }
 
 .cta-button.primary {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background: var(--accent-secondary);
     color: white;
-    box-shadow: 0 4px 15px var(--spectrum-glow);
+    box-shadow: 0 4px 15px var(--spectrum-secondary-glow);
 }
 
 .cta-button.primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px var(--spectrum-glow);
+    box-shadow: 0 8px 25px var(--spectrum-secondary-glow);
 }
 
 .cta-button.secondary {
     background: transparent;
-    color: var(--accent-primary);
-    border: 2px solid var(--accent-primary);
+    color: var(--accent-secondary);
+    border: 2px solid var(--accent-secondary);
 }
 
 .cta-button.secondary:hover {
-    background: var(--accent-primary);
+    background: var(--accent-secondary);
     color: white;
 }
 
@@ -181,148 +215,8 @@ body {
 
 
 /* Sections */
-.spectrum-showcase, .features, .specifications, .pricing, .download {
+.features, .specifications, .pricing, .download {
     padding: 80px 0;
-}
-
-/* Spectrum Showcase */
-.spectrum-showcase {
-    background: var(--bg-primary);
-}
-
-.spectrum-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.spectrum-image-wrapper {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-}
-
-.spectrum-image-wrapper:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 60px rgba(255, 140, 66, 0.2);
-}
-
-.spectrum-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.spectrum-image:hover {
-    transform: scale(1.02);
-}
-
-.spectrum-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(26, 26, 26, 0.8), rgba(255, 140, 66, 0.1));
-    opacity: 0;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.spectrum-image-wrapper:hover .spectrum-overlay {
-    opacity: 1;
-}
-
-.spectrum-features-overlay {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-}
-
-.overlay-feature {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.spectrum-info h3 {
-    color: var(--accent-primary);
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-}
-
-.spectrum-description {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 2rem;
-}
-
-.spectrum-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent-primary);
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    display: block;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.spectrum-controls-preview h4 {
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.controls-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.controls-list li {
-    color: var(--text-secondary);
-    padding-left: 0.5rem;
-    line-height: 1.5;
-}
-
-.controls-list li::before {
-    content: '';
-    margin-right: 0.5rem;
 }
 
 .features {
@@ -428,7 +322,7 @@ body {
 }
 
 .price-header {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background: var(--accent-secondary);
     padding: 2rem;
     text-align: center;
     color: white;
@@ -446,6 +340,7 @@ body {
 .price-amount {
     font-size: 3rem;
     font-weight: 700;
+    color: white;
 }
 
 .price-period {
@@ -484,7 +379,7 @@ body {
 
 .pricing-button {
     display: inline-block;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background: var(--accent-secondary);
     color: white;
     padding: 1rem 3rem;
     border-radius: 8px;
@@ -492,12 +387,12 @@ body {
     font-weight: 600;
     font-size: 1.1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px var(--spectrum-glow);
+    box-shadow: 0 4px 15px var(--spectrum-secondary-glow);
 }
 
 .pricing-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px var(--spectrum-glow);
+    box-shadow: 0 8px 25px var(--spectrum-secondary-glow);
 }
 
 .money-back {
@@ -563,7 +458,7 @@ body {
 .download-price {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--accent-primary);
+    color: white;
     margin-bottom: 1.5rem;
 }
 
@@ -571,7 +466,7 @@ body {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background: var(--accent-secondary);
     color: white;
     padding: 1.25rem 2.5rem;
     border-radius: 8px;
@@ -579,13 +474,13 @@ body {
     font-weight: 600;
     font-size: 1.1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px var(--spectrum-glow);
+    box-shadow: 0 4px 15px var(--spectrum-secondary-glow);
     margin-bottom: 1rem;
 }
 
 .download-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px var(--spectrum-glow);
+    box-shadow: 0 8px 25px var(--spectrum-secondary-glow);
 }
 
 .button-subtitle {
@@ -680,6 +575,10 @@ body {
         text-align: center;
     }
     
+    .hero-screenshot {
+        order: -1;
+    }
+    
     .title-primary {
         font-size: 2.5rem;
     }
@@ -713,16 +612,6 @@ body {
     .footer-links {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-    }
-    
-    .spectrum-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .spectrum-stats {
-        grid-template-columns: 1fr;
-        gap: 1rem;
     }
 }
 
