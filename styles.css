@@ -124,7 +124,6 @@ body {
 }
 
 .screenshot-wrapper:hover {
-    box-shadow: 0 4px 12px rgba(45, 143, 93, 0.25);
     transform: scale(1.05);
 }
 
@@ -244,8 +243,8 @@ body {
 
 .feature-card:hover {
     transform: translateY(-5px);
-    border-color: var(--accent-primary);
-    box-shadow: 0 10px 30px rgba(255, 140, 66, 0.1);
+    border-color: var(--accent-secondary) !important;
+    box-shadow: 0 10px 30px rgba(45, 143, 93, 0.1) !important;
 }
 
 .feature-icon {
