@@ -293,10 +293,25 @@ function debounce(func, wait) {
     };
 }
 
+// Spectrum screenshot fullscreen function
+function openSpectrumFullscreen(img) {
+    if (img.requestFullscreen) {
+        img.requestFullscreen();
+    } else if (img.webkitRequestFullscreen) {
+        img.webkitRequestFullscreen();
+    } else if (img.msRequestFullscreen) {
+        img.msRequestFullscreen();
+    }
+}
+
+// Make function globally available
+window.openSpectrumFullscreen = openSpectrumFullscreen;
+
 // Export for potential module use
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         formatCurrency,
-        debounce
+        debounce,
+        openSpectrumFullscreen
     };
 }
