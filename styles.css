@@ -117,29 +117,23 @@ body {
     position: relative;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
     max-width: 100%;
-    max-height: 400px;
+    max-height: 700px;
 }
 
 .screenshot-wrapper:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 60px var(--spectrum-glow);
+    box-shadow: 0 4px 12px rgba(45, 143, 93, 0.25);
 }
 
 .hero-screenshot-image {
     width: 100%;
     height: 100%;
-    max-height: 400px;
+    max-height: 700px;
     object-fit: contain;
     display: block;
     cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.hero-screenshot-image:hover {
-    transform: scale(1.02);
 }
 
 .hero-title {
