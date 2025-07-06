@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    // Gumroad button (placeholder for actual integration)
+    // Gumroad button - now properly linked
     const gumroadButton = document.getElementById('gumroad-button');
     if (gumroadButton) {
-        gumroadButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            // TODO: Replace with actual Gumroad link when store is set up
-            alert('Gumroad store coming soon! Check back in a few days.');
+        // Button now has proper href - no need to prevent default
+        // Just track the click for analytics
+        gumroadButton.addEventListener('click', function() {
+            trackEvent('click', 'purchase', 'gumroad-soundanalyzer');
         });
     }
 
