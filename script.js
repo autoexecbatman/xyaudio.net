@@ -15,13 +15,48 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Navbar background opacity on scroll
+    // Enhanced Navbar with parallax and blur on scroll
     const navbar = document.querySelector('.navbar');
+    let lastScrollY = 0;
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(26, 26, 26, 0.98)';
+        const scrollY = window.scrollY;
+
+        // Enhanced navbar background
+        if (scrollY > 100) {
+            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            navbar.style.backdropFilter = 'blur(25px) saturate(200%)';
         } else {
-            navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+            navbar.style.background = 'rgba(10, 10, 10, 0.8)';
+            navbar.style.backdropFilter = 'blur(20px) saturate(180%)';
+        }
+
+        // Navbar hide/show on scroll direction
+        if (scrollY > lastScrollY && scrollY > 200) {
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+        lastScrollY = scrollY;
+    });
+
+    // Parallax effect for hero section
+    const heroSection = document.querySelector('.hero');
+    const heroContent = document.querySelector('.hero-content');
+    const heroScreenshot = document.querySelector('.hero-screenshot');
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const parallaxSpeed = 0.5;
+
+        if (heroSection && scrolled < window.innerHeight) {
+            if (heroContent) {
+                heroContent.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                heroContent.style.opacity = 1 - (scrolled / 600);
+            }
+            if (heroScreenshot) {
+                heroScreenshot.style.transform = `translateY(${scrolled * parallaxSpeed * 0.7}px)`;
+            }
         }
     });
 
@@ -76,17 +111,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    // Add dynamic hover effects to feature cards
+    // Advanced 3D tilt effect on feature cards
     const featureCards = document.querySelectorAll('.feature-card');
     featureCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.borderColor = '#ff8c42';
-            this.style.boxShadow = '0 15px 35px rgba(255, 140, 66, 0.2)';
+        card.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
         });
-        
+
         card.addEventListener('mouseleave', function() {
-            this.style.borderColor = '#505050';
-            this.style.boxShadow = 'none';
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+    });
+
+    // Magnetic effect on CTA buttons
+    const magneticButtons = document.querySelectorAll('.cta-button, .pricing-button, .download-button');
+    magneticButtons.forEach(button => {
+        button.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            this.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.05)`;
+        });
+
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translate(0, 0) scale(1)';
         });
     });
 
