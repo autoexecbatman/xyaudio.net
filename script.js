@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ║  Interested in our code? We're always looking for talented  ║
     ║  developers to join our team!                               ║
     ║                                                              ║
-    ║  Contact: contact@xyaudio.net                               ║
+    ║  Contact: xyaudiomail@gmail.com                             ║
     ║  Website: https://xyaudio.net                               ║
     ╚══════════════════════════════════════════════════════════════╝
     `);
