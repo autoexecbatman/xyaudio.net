@@ -1,3 +1,19 @@
 User-agent: *
 Allow: /
-Sitemap: https://autoexecbatman.github.io/xyaudio.net/sitemap.xml
+Disallow: /.git/
+Disallow: /.claude/
+Disallow: /thank-you.html
+
+# Crawl-delay for aggressive bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Sitemap location
+Sitemap: https://xyaudio.net/sitemap.xml
+
+# Allow Google AdsBot
+User-agent: AdsBot-Google
+Allow: /
