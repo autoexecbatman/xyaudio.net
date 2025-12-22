@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - SoundAnalyzer Purchase Complete</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="styles.css?v=3">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17824320357"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17824320357');
+    </script>
+
+    <!--
+    ==========================================
+    IMPORTANT: ADD YOUR CONVERSION TRACKING CODE HERE
+    ==========================================
+
+    After creating your conversion action in Google Ads:
+    1. Go to Google Ads → Tools → Conversions
+    2. Create new conversion: "Purchase"
+    3. Copy the event snippet code
+    4. Replace the PLACEHOLDER code below with your actual conversion code
+
+    It will look like this:
+
+    <script>
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17824320357/XXXXX', // Replace XXXXX with your conversion label
+          'value': 5.0,
+          'currency': 'USD',
+          'transaction_id': ''
+      });
+    </script>
+    -->
+
+    <!-- Event snippet for Purchase conversion -->
+    <script>
+      // PLACEHOLDER - Replace this after creating conversion in Google Ads
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17824320357/CONVERSION_LABEL_HERE',
+          'value': 5.0,
+          'currency': 'USD',
+          'transaction_id': ''
+      });
+    </script>
+
+    <style>
+        .thank-you-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thank-you-container {
+            max-width: 700px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: var(--accent-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: successPop 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 60px var(--spectrum-secondary-glow);
+        }
+
+        @keyframes successPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .thank-you-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+        }
+
+        .thank-you-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s backwards;
+        }
+
+        .info-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s backwards;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .info-box h3 {
+            color: var(--accent-tertiary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-box p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-box li {
+            color: var(--text-secondary);
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .info-box li:last-child {
+            border-bottom: none;
+        }
+
+        .info-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-secondary) 0%, #3ba76f 100%);
+            color: white;
+            box-shadow: 0 8px 24px var(--spectrum-secondary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 36px var(--spectrum-secondary-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent-tertiary);
+            color: var(--accent-tertiary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-tertiary);
+            color: var(--bg-primary);
+        }
+
+        .support-note {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: rgba(45, 143, 93, 0.1);
+            border-left: 4px solid var(--accent-secondary);
+            border-radius: 8px;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1s backwards;
+        }
+
+        .support-note p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .support-note a {
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .support-note a:hover {
+            color: var(--accent-tertiary);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="thank-you-hero">
+        <div class="thank-you-container">
+            <div class="success-icon">✓</div>
+
+            <h1 class="thank-you-title">Thank You!</h1>
+            <p class="thank-you-subtitle">Your purchase of SoundAnalyzer is complete</p>
+
+            <div class="info-box">
+                <h3>What happens next?</h3>
+                <ul>
+                    <li>Check your email for the download link from Gumroad</li>
+                    <li>Download and install SoundAnalyzer on your Windows PC</li>
+                    <li>Your license key (if applicable) will be in the email</li>
+                    <li>Start analyzing audio in real-time!</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h3>Getting Started</h3>
+                <p>SoundAnalyzer is ready to use immediately:</p>
+                <ul>
+                    <li>Launch the standalone application or load as VST3 plugin</li>
+                    <li>Built-in system audio capture works automatically</li>
+                    <li>Choose your FFT size and windowing function</li>
+                    <li>Adjust visualization settings to your preference</li>
+                </ul>
+            </div>
+
+            <div class="cta-group">
+                <a href="/" class="btn btn-primary">
+                    ← Back to Home
+                </a>
+                <a href="mailto:xyaudiomail@gmail.com" class="btn btn-secondary">
+                    Contact Support
+                </a>
+            </div>
+
+            <div class="support-note">
+                <p>
+                    <strong>Need help?</strong> Email us at
+                    <a href="mailto:xyaudiomail@gmail.com">xyaudiomail@gmail.com</a>
+                    and we'll get back to you within 24 hours.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js?v=2"></script>
+</body>
+</html>
