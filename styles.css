@@ -1329,105 +1329,50 @@ html {
     }
 }
 
-/* Trust Signals */
-.trust-signals {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: rgba(45, 143, 93, 0.1);
-    border-radius: 12px;
-    border: 1px solid rgba(45, 143, 93, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.trust-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-}
-
-.trust-icon {
-    font-size: 1.2rem;
-}
-
-.trust-text {
-    font-weight: 500;
-}
-
 /* FAQ Section */
 .faq {
     padding: 80px 0;
     background: var(--bg-primary);
-    position: relative;
-    overflow: hidden;
 }
 
 .faq-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .faq-item {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.faq-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.4);
-    border-color: var(--accent-tertiary);
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-tertiary);
 }
 
 .faq-item h3 {
-    color: var(--accent-tertiary);
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
     font-weight: 600;
 }
 
 .faq-item p {
     color: var(--text-secondary);
-    line-height: 1.8;
-    font-size: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
-/* Responsive Adjustments for New Sections */
+/* Responsive Adjustments for FAQ */
 @media (max-width: 768px) {
-    .trust-signals {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-
-    .trust-item {
-        justify-content: center;
-    }
-
-    .faq-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
     .faq-item {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
 
     .faq-item h3 {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 }
 
