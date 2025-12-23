@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
             navbar.style.backdropFilter = 'blur(20px) saturate(180%)';
         }
 
-        // Navbar hide/show on scroll direction
-        if (scrollY > lastScrollY && scrollY > 200) {
+        // Navbar hide when scrolling down, show only at top
+        if (scrollY > 200) {
             navbar.style.transform = 'translateY(-100%)';
             isNavbarVisible = false;
         } else {
