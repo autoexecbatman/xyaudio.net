@@ -212,33 +212,6 @@ document.addEventListener('DOMContentLoaded', function() {
         monitorFPS();
     }
 
-    // Keyboard navigation enhancement
-    document.addEventListener('keydown', function(e) {
-        // Press 'D' to go to download section
-        if (e.key === 'd' || e.key === 'D') {
-            const downloadSection = document.getElementById('download');
-            if (downloadSection) {
-                downloadSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-        
-        // Press 'F' to go to features section
-        if (e.key === 'f' || e.key === 'F') {
-            const featuresSection = document.getElementById('features');
-            if (featuresSection) {
-                featuresSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-        
-        // Press 'P' to go to pricing section
-        if (e.key === 'p' || e.key === 'P') {
-            const pricingSection = document.getElementById('pricing');
-            if (pricingSection) {
-                pricingSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    });
-
     // Mobile menu toggle (for future responsive menu)
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
