@@ -43,24 +43,27 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollY = scrollY;
     });
 
-    // Show navbar when hovering near top of page
+    // Show navbar when hovering near top of page (desktop only)
     let wasHiddenByScroll = false;
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    document.addEventListener('mousemove', (e) => {
-        const mouseY = e.clientY;
-        const scrollY = window.scrollY;
+    if (!isTouchDevice) {
+        document.addEventListener('mousemove', (e) => {
+            const mouseY = e.clientY;
+            const scrollY = window.scrollY;
 
-        // Show navbar when mouse is in top 100px
-        if (mouseY < 100 && !isNavbarVisible && scrollY > 200) {
-            navbar.style.transform = 'translateY(0)';
-            wasHiddenByScroll = true;
-        }
-        // Hide navbar when mouse leaves top area and it was hidden by scroll
-        else if (mouseY > 100 && wasHiddenByScroll && scrollY > 200) {
-            navbar.style.transform = 'translateY(-100%)';
-            wasHiddenByScroll = false;
-        }
-    });
+            // Show navbar when mouse is in top 100px
+            if (mouseY < 100 && !isNavbarVisible && scrollY > 200) {
+                navbar.style.transform = 'translateY(0)';
+                wasHiddenByScroll = true;
+            }
+            // Hide navbar when mouse leaves top area and it was hidden by scroll
+            else if (mouseY > 100 && wasHiddenByScroll && scrollY > 200) {
+                navbar.style.transform = 'translateY(-100%)';
+                wasHiddenByScroll = false;
+            }
+        });
+    }
 
     // Parallax effect for hero section
     const heroSection = document.querySelector('.hero');
