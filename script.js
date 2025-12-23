@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Enhanced Navbar with parallax and blur on scroll
     const navbar = document.querySelector('.navbar');
     let lastScrollY = 0;
+    let isNavbarVisible = true;
 
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
@@ -34,10 +35,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // Navbar hide/show on scroll direction
         if (scrollY > lastScrollY && scrollY > 200) {
             navbar.style.transform = 'translateY(-100%)';
+            isNavbarVisible = false;
         } else {
             navbar.style.transform = 'translateY(0)';
+            isNavbarVisible = true;
         }
         lastScrollY = scrollY;
+    });
+
+    // Show navbar when hovering near top of page
+    document.addEventListener('mousemove', (e) => {
+        const mouseY = e.clientY;
+
+        // Show navbar when mouse is in top 100px
+        if (mouseY < 100 && !isNavbarVisible) {
+            navbar.style.transform = 'translateY(0)';
+        }
     });
 
     // Parallax effect for hero section
