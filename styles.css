@@ -542,6 +542,23 @@ main {
         0 0 0 1px rgba(45, 143, 93, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: card-breathe 6s ease-in-out infinite;
+}
+
+@keyframes card-breathe {
+    0%, 100% {
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.6),
+            0 0 0 1px rgba(45, 143, 93, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow:
+            0 25px 80px rgba(0, 0, 0, 0.7),
+            0 0 0 1px rgba(45, 143, 93, 0.5),
+            0 0 60px rgba(45, 143, 93, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
 }
 
 .pricing-card::before {
@@ -559,6 +576,18 @@ main {
     letter-spacing: 1px;
     box-shadow: 0 8px 20px rgba(255, 66, 66, 0.4);
     z-index: 10;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 8px 20px rgba(255, 66, 66, 0.4);
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        box-shadow: 0 8px 30px rgba(255, 66, 66, 0.6), 0 0 40px rgba(255, 66, 66, 0.3);
+        transform: translateX(-50%) scale(1.05);
+    }
 }
 
 .pricing-card:hover {
@@ -571,7 +600,11 @@ main {
 }
 
 .price-header {
-    background: linear-gradient(135deg, var(--accent-secondary) 0%, #2a7a53 100%);
+    background: linear-gradient(135deg,
+        var(--accent-secondary) 0%,
+        #2a7a53 50%,
+        var(--accent-secondary) 100%);
+    background-size: 200% 200%;
     padding: 2rem 1.5rem;
     text-align: center;
     color: white;
@@ -582,6 +615,16 @@ main {
         0 0 40px rgba(45, 143, 93, 0.3),
         0 0 80px rgba(45, 143, 93, 0.15),
         inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .price-header::before {
@@ -614,6 +657,18 @@ main {
     line-height: 1;
     display: block;
     margin-bottom: 0.5rem;
+    animation: price-breathe 3s ease-in-out infinite;
+}
+
+@keyframes price-breathe {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        transform: scale(1.03);
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 255, 255, 0.2);
+    }
 }
 
 .price-period {
@@ -635,15 +690,29 @@ main {
     display: inline-block;
     position: relative;
     z-index: 1;
+    overflow: hidden;
 }
 
 .price-note::before {
-    display: block;
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
-    color: var(--accent-tertiary);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer-sweep 3s infinite;
 }
+
+@keyframes shimmer-sweep {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
 
 .price-features {
     padding: 1.5rem;
@@ -699,7 +768,32 @@ main {
     box-shadow:
         0 0 10px rgba(45, 143, 93, 0.15),
         0 0 20px rgba(45, 143, 93, 0.05);
+    animation: checkmark-glow 3s ease-in-out infinite;
 }
+
+@keyframes checkmark-glow {
+    0%, 100% {
+        box-shadow:
+            0 0 10px rgba(45, 143, 93, 0.15),
+            0 0 20px rgba(45, 143, 93, 0.05);
+    }
+    50% {
+        box-shadow:
+            0 0 15px rgba(45, 143, 93, 0.3),
+            0 0 30px rgba(45, 143, 93, 0.15);
+    }
+}
+
+/* Stagger checkmark animations */
+.price-features li:nth-child(1)::before { animation-delay: 0s; }
+.price-features li:nth-child(2)::before { animation-delay: 0.2s; }
+.price-features li:nth-child(3)::before { animation-delay: 0.4s; }
+.price-features li:nth-child(4)::before { animation-delay: 0.6s; }
+.price-features li:nth-child(5)::before { animation-delay: 0.8s; }
+.price-features li:nth-child(6)::before { animation-delay: 1s; }
+.price-features li:nth-child(7)::before { animation-delay: 1.2s; }
+.price-features li:nth-child(8)::before { animation-delay: 1.4s; }
+.price-features li:nth-child(9)::before { animation-delay: 1.6s; }
 
 .price-features li:last-child {
     border-bottom: none;
@@ -734,6 +828,26 @@ main {
     overflow: hidden;
     border: 2px solid transparent;
     background-clip: padding-box;
+    animation: button-pulse 4s ease-in-out infinite;
+}
+
+@keyframes button-pulse {
+    0%, 100% {
+        box-shadow:
+            0 12px 40px rgba(45, 143, 93, 0.4),
+            0 6px 20px rgba(0, 0, 0, 0.4),
+            0 0 60px rgba(45, 143, 93, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            inset 0 -1px 3px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow:
+            0 15px 50px rgba(45, 143, 93, 0.5),
+            0 8px 25px rgba(0, 0, 0, 0.4),
+            0 0 80px rgba(45, 143, 93, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 3px rgba(0, 0, 0, 0.3);
+    }
 }
 
 .pricing-button::before {
@@ -783,11 +897,28 @@ main {
     height: 300px;
 }
 
+.pricing-button:active {
+    transform: translateY(-2px) scale(0.98);
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .money-back {
     margin-top: 1rem;
     color: var(--accent-tertiary);
     font-size: 0.9rem;
     font-weight: 600;
+    animation: subtle-pulse 5s ease-in-out infinite;
+}
+
+@keyframes subtle-pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scale(0.98);
+    }
 }
 
 /* Download Section */
