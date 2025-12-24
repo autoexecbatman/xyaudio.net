@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WASAPI Loopback Spectrum Analyzer - Real-Time System Audio Analysis | XY Audio</title>
+    <meta name="description" content="Professional WASAPI loopback spectrum analyzer for Windows. Capture and analyze system audio in real-time with built-in FFT analysis. No routing required - direct system audio monitoring.">
+    <meta name="keywords" content="wasapi loopback analyzer, wasapi spectrum analyzer, system audio analyzer, loopback audio capture, wasapi loopback capture, real-time audio analysis, windows audio analyzer">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="canonical" href="https://xyaudio.net/wasapi-loopback-analyzer.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="WASAPI Loopback Spectrum Analyzer - Real-Time System Audio Analysis">
+    <meta property="og:description" content="Professional spectrum analyzer with built-in WASAPI loopback capture. Analyze any audio playing on your Windows PC in real-time.">
+    <meta property="og:image" content="https://xyaudio.net/screenshot.jpg">
+    <meta property="og:url" content="https://xyaudio.net/wasapi-loopback-analyzer.html">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "WASAPI Loopback Spectrum Analyzer for Windows",
+        "description": "Complete guide to WASAPI loopback spectrum analysis with SoundAnalyzer - professional real-time audio monitoring.",
+        "image": "https://xyaudio.net/screenshot.jpg",
+        "author": {
+            "@type": "Organization",
+            "name": "XY Audio"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "XY Audio",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://xyaudio.net/screenshot.jpg"
+            }
+        }
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "What is WASAPI loopback?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "WASAPI (Windows Audio Session API) loopback is a Windows feature that allows applications to capture audio being played through your system's output devices. It enables you to record or analyze any sound playing on your PC - from streaming services, games, DAWs, or any other application - without complex audio routing."
+            }
+        }, {
+            "@type": "Question",
+            "name": "How does WASAPI loopback spectrum analysis work?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "WASAPI loopback spectrum analysis captures the audio stream from your system's playback device in real-time and performs FFT (Fast Fourier Transform) analysis to display the frequency content. SoundAnalyzer uses WASAPI loopback to directly monitor system audio without requiring virtual audio cables or complex routing setups."
+            }
+        }, {
+            "@type": "Question",
+            "name": "Why use WASAPI loopback instead of microphone input?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "WASAPI loopback provides bit-perfect digital audio capture directly from your system, avoiding the quality loss and noise introduced by analog recording or microphone capture. It's ideal for analyzing streaming audio, monitoring DAW output, testing audio software, or comparing different audio sources with perfect fidelity."
+            }
+        }]
+    }
+    </script>
+</head>
+<body id="top">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-xy">XY</span><span class="brand-audio">Audio</span>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/#download" class="nav-link">Download</a>
+                <a href="/#features" class="nav-link">Features</a>
+                <a href="/#pricing" class="nav-link">Pricing</a>
+                <a href="#wasapi-guide" class="nav-link">WASAPI Guide</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="title-primary">WASAPI Loopback</span>
+                        <span class="title-secondary">Spectrum Analyzer</span>
+                    </h1>
+                    <p class="hero-description">
+                        Professional real-time spectrum analysis with built-in WASAPI loopback capture.
+                        Monitor any audio playing on your Windows PC without complex routing or virtual cables.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="/#pricing" class="cta-button primary">
+                            Get SoundAnalyzer
+                            <span class="cta-subtitle">$46 one-time</span>
+                        </a>
+                        <a href="#wasapi-guide" class="cta-button secondary">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-screenshot">
+                    <div class="screenshot-wrapper">
+                        <img src="screenshot.jpg" alt="WASAPI Loopback Spectrum Analyzer Interface" class="hero-screenshot-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is WASAPI Loopback Section -->
+    <section class="features" id="wasapi-guide">
+        <div class="container">
+            <h2 class="section-title">What is WASAPI Loopback?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔊</div>
+                    <h3>Direct System Audio Capture</h3>
+                    <p>WASAPI (Windows Audio Session API) loopback mode allows you to capture the exact audio being sent to your output device. No quality loss, no microphone feedback, no complex routing - just pure digital capture of what's playing on your PC.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Bit-Perfect Analysis</h3>
+                    <p>Unlike microphone-based recording, WASAPI loopback captures the digital audio stream before it reaches your speakers. This means perfect fidelity analysis of streaming services, YouTube, games, DAW output, or any application audio.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Zero-Latency Monitoring</h3>
+                    <p>Real-time FFT spectrum analysis with minimal latency. See frequency content instantly as audio plays - perfect for mixing, mastering, acoustic analysis, or educational purposes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="specifications">
+        <div class="container">
+            <h2 class="section-title">WASAPI Loopback Use Cases</h2>
+            <div class="specs-grid">
+                <div class="spec-category">
+                    <h3>Music Production</h3>
+                    <ul>
+                        <li>Monitor DAW master output in real-time</li>
+                        <li>Analyze streaming reference tracks</li>
+                        <li>Compare your mix to commercial releases</li>
+                        <li>Check frequency balance without exporting</li>
+                        <li>Verify mastering chain output</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Audio Engineering</h3>
+                    <ul>
+                        <li>Test audio software and plugins</li>
+                        <li>Analyze game audio and soundscapes</li>
+                        <li>Monitor streaming quality (Spotify, YouTube)</li>
+                        <li>Troubleshoot audio issues</li>
+                        <li>Verify audio routing and processing</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Education & Research</h3>
+                    <ul>
+                        <li>Demonstrate frequency concepts</li>
+                        <li>Analyze music theory in real-time</li>
+                        <li>Study sound design techniques</li>
+                        <li>Compare audio formats and codecs</li>
+                        <li>Acoustic measurement and testing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">How SoundAnalyzer Uses WASAPI Loopback</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">1️⃣</div>
+                    <h3>Automatic Detection</h3>
+                    <p>SoundAnalyzer automatically detects your Windows playback devices and enables WASAPI loopback capture. No manual configuration or driver installation required.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">2️⃣</div>
+                    <h3>Real-Time FFT Processing</h3>
+                    <p>Captured audio is processed through high-performance FFT algorithms (1024-16384 points) to display precise frequency content. Choose your FFT size and windowing function for optimal analysis.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">3️⃣</div>
+                    <h3>Professional Visualization</h3>
+                    <p>View your audio spectrum with customizable frequency scales (linear/logarithmic), amplitude ranges, and peak hold indicators. Export screenshots for documentation or comparison.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose SoundAnalyzer Section -->
+    <section class="specifications">
+        <div class="container">
+            <h2 class="section-title">Why Choose SoundAnalyzer for WASAPI Loopback Analysis?</h2>
+            <div class="specs-grid">
+                <div class="spec-category">
+                    <h3>Built-In WASAPI Support</h3>
+                    <ul>
+                        <li>No virtual audio cables needed</li>
+                        <li>No complex routing configuration</li>
+                        <li>Works with all Windows 10/11 devices</li>
+                        <li>Automatic device detection</li>
+                        <li>Switch between devices on the fly</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Professional Features</h3>
+                    <ul>
+                        <li>Real-time FFT spectrum analysis</li>
+                        <li>Multiple FFT sizes (1024-16384)</li>
+                        <li>Customizable windowing functions</li>
+                        <li>Peak hold and smoothing</li>
+                        <li>Low CPU usage, optimized performance</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Affordable & Simple</h3>
+                    <ul>
+                        <li>One-time payment ($46)</li>
+                        <li>No subscription fees</li>
+                        <li>Works standalone or as VST3</li>
+                        <li>Lifetime updates included</li>
+                        <li>30-day money-back guarantee</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">WASAPI Loopback FAQ</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What is WASAPI loopback?</h3>
+                    <p>WASAPI (Windows Audio Session API) loopback is a Windows feature that allows applications to capture audio being played through your system's output devices. It enables you to record or analyze any sound playing on your PC - from streaming services, games, DAWs, or any other application - without complex audio routing.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How does WASAPI loopback spectrum analysis work?</h3>
+                    <p>WASAPI loopback spectrum analysis captures the audio stream from your system's playback device in real-time and performs FFT (Fast Fourier Transform) analysis to display the frequency content. SoundAnalyzer uses WASAPI loopback to directly monitor system audio without requiring virtual audio cables or complex routing setups.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Why use WASAPI loopback instead of microphone input?</h3>
+                    <p>WASAPI loopback provides bit-perfect digital audio capture directly from your system, avoiding the quality loss and noise introduced by analog recording or microphone capture. It's ideal for analyzing streaming audio, monitoring DAW output, testing audio software, or comparing different audio sources with perfect fidelity.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Do I need virtual audio cables for WASAPI loopback?</h3>
+                    <p>No! That's the beauty of WASAPI loopback - it's built directly into Windows. SoundAnalyzer has native WASAPI loopback support, so you don't need VB-Cable, Virtual Audio Cable, or any third-party routing software. Just select your playback device and start analyzing.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I use WASAPI loopback with streaming services?</h3>
+                    <p>Yes! WASAPI loopback captures all audio playing through your system, including Spotify, YouTube, Apple Music, Netflix, or any other streaming service. Perfect for analyzing reference tracks or studying commercial productions.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Does WASAPI loopback work with my DAW?</h3>
+                    <p>Absolutely. You can monitor your DAW's output in real-time using WASAPI loopback. Use SoundAnalyzer standalone to analyze your DAW's master output, or use it as a VST3 plugin directly in your DAW for integrated workflow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Get Started with WASAPI Loopback Analysis</h2>
+            <div class="pricing-card">
+                <div class="price-header">
+                    <h3>SoundAnalyzer</h3>
+                    <div class="price">
+                        <span class="price-amount">$46</span>
+                        <span class="price-period">One-Time Payment</span>
+                    </div>
+                    <p class="price-note">SAVE $54 vs. annual subscription tools</p>
+                </div>
+
+                <div class="price-features">
+                    <ul>
+                        <li>Built-in WASAPI system audio capture</li>
+                        <li>Real-time FFT spectrum analysis</li>
+                        <li>VST3 plugin and Standalone application</li>
+                        <li>Windows 10/11 (64-bit)</li>
+                        <li>Professional peak hold and smoothing</li>
+                        <li>Configurable FFT sizes and windowing</li>
+                        <li>Low CPU usage, optimized performance</li>
+                        <li>1 year of free updates</li>
+                        <li>Email support included</li>
+                    </ul>
+                </div>
+
+                <div class="price-action">
+                    <a href="https://xyaudio.gumroad.com/l/soundanalyzer" class="pricing-button" id="gumroad-button">
+                        Get SoundAnalyzer Now
+                    </a>
+                    <p class="money-back">30-Day Money Back Guarantee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="brand-xy">XY</span><span class="brand-audio">Audio</span>
+                    </div>
+                    <p>Professional audio analysis tools for Windows</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="/">SoundAnalyzer</a>
+                        <a href="/#features">Features</a>
+                        <a href="/#pricing">Pricing</a>
+                        <a href="/#download">Download</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="/wasapi-loopback-analyzer.html">WASAPI Guide</a>
+                        <a href="/#faq">FAQ</a>
+                        <a href="/#specifications">Specifications</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="mailto:xyaudiomail@gmail.com">Contact</a>
+                        <a href="mailto:xyaudiomail@gmail.com">Email Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 XY Audio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Read a Spectrum Analyzer - Complete Guide for Mixing & Mastering | XY Audio</title>
+    <meta name="description" content="Professional guide to reading and using spectrum analyzers for mixing and mastering. Learn frequency ranges, FFT resolution, identifying resonances, frequency masking, and reference comparison techniques used by audio engineers.">
+    <meta name="keywords" content="how to read spectrum analyzer, spectrum analyzer guide, FFT analysis, frequency masking, audio mixing, mastering techniques, frequency ranges, audio engineering">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="canonical" href="https://xyaudio.net/how-to-read-spectrum-analyzer.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="How to Read a Spectrum Analyzer - Professional Audio Engineering Guide">
+    <meta property="og:description" content="Complete guide to spectrum analysis for mixing and mastering. Learn professional techniques for identifying resonances, frequency masking, and achieving balanced mixes.">
+    <meta property="og:image" content="https://xyaudio.net/screenshot.jpg">
+    <meta property="og:url" content="https://xyaudio.net/how-to-read-spectrum-analyzer.html">
+    <meta property="og:type" content="article">
+
+    <!-- Schema.org Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "How to Read a Spectrum Analyzer - Complete Professional Guide",
+        "description": "Comprehensive guide to reading spectrum analyzers for audio mixing and mastering, including frequency ranges, FFT resolution, and professional techniques.",
+        "image": "https://xyaudio.net/screenshot.jpg",
+        "author": {
+            "@type": "Organization",
+            "name": "XY Audio"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "XY Audio"
+        },
+        "datePublished": "2025-01-24"
+    }
+    </script>
+</head>
+<body id="top">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-xy">XY</span><span class="brand-audio">Audio</span>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/#download" class="nav-link">Download</a>
+                <a href="/#features" class="nav-link">Features</a>
+                <a href="/#pricing" class="nav-link">Pricing</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="title-primary">How to Read</span>
+                        <span class="title-secondary">A Spectrum Analyzer</span>
+                    </h1>
+                    <p class="hero-description">
+                        Master the essential tool for mixing and mastering. Learn professional techniques for reading frequency spectrums,
+                        identifying resonances, fixing frequency masking, and achieving balanced, commercial-quality mixes.
+                    </p>
+                </div>
+                <div class="hero-screenshot">
+                    <div class="screenshot-wrapper">
+                        <img src="screenshot.jpg" alt="Spectrum Analyzer Display Explained" class="hero-screenshot-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Understanding the Display -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Understanding the Spectrum Display</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">↔️</div>
+                    <h3>Horizontal Axis - Frequency</h3>
+                    <p>The horizontal (X) axis represents frequency, typically from 20 Hz to 20 kHz - the range of human hearing. Lower frequencies (bass) appear on the left, higher frequencies (treble) on the right. Most analyzers offer both linear and logarithmic scales.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">↕️</div>
+                    <h3>Vertical Axis - Amplitude</h3>
+                    <p>The vertical (Y) axis shows amplitude or power of each frequency component, measured in decibels (dB). Taller peaks indicate louder frequencies. Professional mixing typically aims for balanced amplitude across the spectrum without extreme peaks or valleys.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-Time vs Peak Hold</h3>
+                    <p>Real-time mode shows instantaneous frequency content - constantly changing with your audio. Peak hold mode captures and displays the maximum amplitude reached at each frequency over time, making it easier to spot resonances and compare levels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frequency Ranges -->
+    <section class="specifications">
+        <div class="container">
+            <h2 class="section-title">Audio Frequency Ranges Explained</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Understanding frequency ranges is crucial for mixing. Each band has specific characteristics and contains different instruments. Here's the professional breakdown used by audio engineers worldwide.
+            </p>
+            <div class="specs-grid">
+                <div class="spec-category">
+                    <h3>Sub-Bass: 20-60 Hz</h3>
+                    <ul>
+                        <li><strong>Feel vs Hear:</strong> More felt than heard</li>
+                        <li><strong>Instruments:</strong> Synthesizers, bass guitar (lowest notes extend to 40 Hz), kick drum fundamentals</li>
+                        <li><strong>Mixing Tip:</strong> Keep this range clean - too much energy here causes muddiness</li>
+                        <li><strong>Common Issue:</strong> Rumble and room noise live here</li>
+                        <li><strong>Action:</strong> High-pass filter unnecessary content below instrument fundamentals</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Bass: 60-250 Hz</h3>
+                    <ul>
+                        <li><strong>The Foundation:</strong> Where most bass energy lives (90-200 Hz)</li>
+                        <li><strong>Instruments:</strong> Bass guitar, kick drum, toms, low piano, male vocals (fundamentals)</li>
+                        <li><strong>Warmth Zone:</strong> 250 Hz adds warmth without losing definition</li>
+                        <li><strong>Common Issue:</strong> Too much at 120-150 Hz causes boominess</li>
+                        <li><strong>Mixing Tip:</strong> Ensure bass and kick don't fight - give each their own space</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Low-Midrange: 250-500 Hz</h3>
+                    <ul>
+                        <li><strong>Body & Warmth:</strong> Adds fullness to instruments</li>
+                        <li><strong>Instruments:</strong> Guitars, keyboards, snare drums, vocals</li>
+                        <li><strong>Warning:</strong> Too much around 500 Hz makes mixes sound "boxy"</li>
+                        <li><strong>Common Issue:</strong> Frequency masking problems start here</li>
+                        <li><strong>Action:</strong> Notch problematic resonances, give each instrument space</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Midrange: 500-2000 Hz</h3>
+                    <ul>
+                        <li><strong>Vocal Territory:</strong> Critical for vocal presence and intelligibility</li>
+                        <li><strong>Instruments:</strong> Vocals, guitars, piano, brass, strings</li>
+                        <li><strong>Character:</strong> 1000 Hz boost gives "horn-like" quality</li>
+                        <li><strong>Mixing Tip:</strong> This is where your mix lives - balance carefully</li>
+                        <li><strong>Common Issue:</strong> Harsh, nasal tones if overemphasized</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Upper-Midrange: 2-4 kHz</h3>
+                    <ul>
+                        <li><strong>Attack & Definition:</strong> Where transients and consonants live</li>
+                        <li><strong>Instruments:</strong> Vocal consonants, snare crack, guitar pick attack</li>
+                        <li><strong>Clarity:</strong> Cutting through a dense mix happens here</li>
+                        <li><strong>Warning:</strong> Too much causes listener fatigue</li>
+                        <li><strong>Critical Frequency:</strong> 2.5-3 kHz is most sensitive for human hearing</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Presence: 4-6 kHz</h3>
+                    <ul>
+                        <li><strong>Clarity & Detail:</strong> Makes elements sound "present" and close</li>
+                        <li><strong>Instruments:</strong> Cymbals, hi-hats, vocal sibilance, string harmonics</li>
+                        <li><strong>Mix Position:</strong> Boost for upfront sound, cut to push back</li>
+                        <li><strong>Common Issue:</strong> Harshness and sibilance (excessive "S" sounds)</li>
+                        <li><strong>Tool:</strong> De-essers target 5-8 kHz for vocals</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Brilliance: 6-20 kHz</h3>
+                    <ul>
+                        <li><strong>Air & Sparkle:</strong> High-frequency extension and detail</li>
+                        <li><strong>Instruments:</strong> Cymbals, hi-hats, acoustic guitar shimmer, vocal breathiness</li>
+                        <li><strong>Professional Sound:</strong> Smooth rolloff prevents digital harshness</li>
+                        <li><strong>Mixing Tip:</strong> Shelving boost at 10 kHz adds "air" to mix</li>
+                        <li><strong>Warning:</strong> Too much causes brittle, digital sound</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Techniques -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Professional Spectrum Analysis Techniques</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>1. Identifying Resonances</h3>
+                    <p><strong>What to Look For:</strong> Sharp, narrow peaks in the upper-midrange (2-8 kHz) or broader bumps in low-mids and bass (100-500 Hz).</p>
+                    <p><strong>Why It Matters:</strong> Resonances create harsh, unpleasant tones that stick out in your mix.</p>
+                    <p><strong>How to Fix:</strong> Use a narrow Q EQ cut at the resonant frequency. Solo the track, sweep an EQ boost to find the harsh spot, then cut it by 2-6 dB.</p>
+                    <p><strong>Pro Tip:</strong> Don't rely only on the analyzer - your ears are the final judge.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>2. Reference Track Comparison</h3>
+                    <p><strong>The Technique:</strong> Compare your mix's spectrum to a commercial reference track in the same genre by routing both through your analyzer.</p>
+                    <p><strong>Critical Rule:</strong> Never compare static snapshots. Watch how the spectrums behave in real-time during similar sections.</p>
+                    <p><strong>What to Compare:</strong> Overall spectral balance, bass-to-treble ratio, midrange density, peak levels in each frequency range.</p>
+                    <p><strong>Warning:</strong> Every song is different. Don't try to copy the reference exactly - use it as a guide for general balance.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>3. Finding Unwanted Frequencies</h3>
+                    <p><strong>Low-End Cleanup:</strong> Play the track's lowest note/chord. Look for the lowest frequency bump - that's the fundamental. Safely cut everything below it.</p>
+                    <p><strong>Why This Works:</strong> Removes rumble, room noise, and mic handling without affecting the actual sound.</p>
+                    <p><strong>Example:</strong> If bass guitar's fundamental is 80 Hz, high-pass filter at 40-60 Hz to remove subsonics.</p>
+                    <p><strong>Pro Tip:</strong> Don't be aggressive - gentle slopes (12-18 dB/octave) sound more natural than brick-wall filters.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>4. Fixing Frequency Masking</h3>
+                    <p><strong>The Problem:</strong> When two sounds occupy the same frequency range, they compete and the louder one "masks" the quieter one.</p>
+                    <p><strong>Visual Detection:</strong> If bass and kick both peak at 100 Hz, they're fighting. If guitar and vocals both dominate 1-2 kHz, they'll mask each other.</p>
+                    <p><strong>The Solution:</strong> Give each element its own sonic space. Cut 80-120 Hz from bass where kick lives. Notch guitars at vocal fundamental (200-400 Hz).</p>
+                    <p><strong>Golden Rule:</strong> Each sound should have a clear, definable space in both frequency and stereo field.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>5. Checking Overall Balance</h3>
+                    <p><strong>The Pink Noise Method:</strong> Pink noise has equal energy per octave. A well-balanced mix approximates this curve when viewed on a spectrum analyzer.</p>
+                    <p><strong>What Balanced Looks Like:</strong> Gentle downward slope from bass to treble. No extreme peaks or valleys. Energy distributed across the spectrum.</p>
+                    <p><strong>Common Problems:</strong> Too much energy in 200-400 Hz (muddy), excessive 2-4 kHz (harsh), weak sub-bass or air frequencies.</p>
+                    <p><strong>Remember:</strong> This is a guide, not a rule. Genre matters - EDM has more bass energy, acoustic jazz has more mids.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>6. Monitoring While Mixing</h3>
+                    <p><strong>Real-Time Workflow:</strong> Keep your analyzer visible while mixing to catch problems as they develop.</p>
+                    <p><strong>What to Watch:</strong> When you add a new element, see where its energy appears. When you EQ, verify you're affecting the intended frequencies.</p>
+                    <p><strong>Processing Verification:</strong> Apply compression or saturation and watch how it affects the spectrum. Are you adding harmonics? Taming peaks?</p>
+                    <p><strong>Critical Reminder:</strong> The analyzer confirms what your ears hear. If it looks good but sounds bad, trust your ears.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FFT Settings -->
+    <section class="specifications">
+        <div class="container">
+            <h2 class="section-title">Understanding FFT Size & Resolution</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                FFT (Fast Fourier Transform) is the algorithm that converts audio into the frequency display. The FFT size dramatically affects what you see and how responsive the analyzer is.
+            </p>
+            <div class="specs-grid">
+                <div class="spec-category">
+                    <h3>How FFT Size Works</h3>
+                    <ul>
+                        <li><strong>Formula:</strong> Frequency resolution = Sample Rate ÷ FFT Size</li>
+                        <li><strong>Example:</strong> At 44.1 kHz with 1024 FFT: 44100 ÷ 1024 = ~43 Hz resolution</li>
+                        <li><strong>Higher FFT:</strong> Better frequency detail, more CPU usage, slower response</li>
+                        <li><strong>Lower FFT:</strong> Faster response, less detail, lower CPU usage</li>
+                        <li><strong>Professional Range:</strong> Most analyzers offer 512 to 16384 points</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Choosing the Right FFT Size</h3>
+                    <ul>
+                        <li><strong>1024-2048:</strong> Fast response, good for tracking transients and drums</li>
+                        <li><strong>4096:</strong> Balanced resolution and speed - most common for mixing</li>
+                        <li><strong>8192-16384:</strong> High detail for mastering, finding subtle resonances</li>
+                        <li><strong>Low-end analysis:</strong> Larger FFT (8192+) for precise bass frequency detection</li>
+                        <li><strong>General mixing:</strong> 2048-4096 provides best real-time performance</li>
+                    </ul>
+                </div>
+
+                <div class="spec-category">
+                    <h3>Window Functions Explained</h3>
+                    <ul>
+                        <li><strong>What They Do:</strong> Window functions reduce spectral leakage (signal bleeding into adjacent frequency bins)</li>
+                        <li><strong>Hann Window:</strong> Most common, good general-purpose balance</li>
+                        <li><strong>Blackman Window:</strong> Best for audio work, measures low-level harmonics near strong fundamentals</li>
+                        <li><strong>Hamming:</strong> Better frequency resolution, slightly more leakage</li>
+                        <li><strong>Pro Recommendation:</strong> Blackman for mixing/mastering, Hann for general use</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Critical Warnings & Common Mistakes</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>❌ Don't Mix With Your Eyes</h3>
+                    <p><strong>The Trap:</strong> Making EQ decisions based solely on what the spectrum looks like, not what you hear.</p>
+                    <p><strong>The Truth:</strong> There is no "correct" frequency graph. Each song sounds different, and each graph will be unique. Copying one song's spectrum to another is useless.</p>
+                    <p><strong>Right Approach:</strong> Use the analyzer to confirm what your ears hear and to catch problems you might miss, but always make the final judgment with your ears.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>❌ Ignoring Genre Context</h3>
+                    <p><strong>The Mistake:</strong> Comparing your EDM track's spectrum to an acoustic jazz reference and trying to match it.</p>
+                    <p><strong>Why It's Wrong:</strong> Different genres have completely different spectral balances. EDM emphasizes sub-bass and top-end. Acoustic jazz has strong midrange presence.</p>
+                    <p><strong>Correct Method:</strong> Only compare to references in the same genre. Study what's normal for that style, then make creative decisions within that context.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>❌ Overcorrecting Based on Static Snapshots</h3>
+                    <p><strong>The Problem:</strong> Taking a screenshot of the reference track's spectrum and trying to make yours match exactly.</p>
+                    <p><strong>Why This Fails:</strong> Music is dynamic. The spectrum constantly changes with the arrangement. A snapshot captures one moment, not the whole picture.</p>
+                    <p><strong>Professional Technique:</strong> Compare similar sections in real-time (verse to verse, chorus to chorus). Watch how the spectrum moves and breathes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Professional Spectrum Analysis Tools</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                To apply these techniques, you need a capable spectrum analyzer with proper FFT resolution, configurable settings, and real-time response. Here's what to look for in a professional tool.
+            </p>
+            <div class="pricing-card">
+                <div class="price-header">
+                    <h3>SoundAnalyzer</h3>
+                    <div class="price">
+                        <span class="price-period">Professional Features for Mixing & Mastering</span>
+                    </div>
+                </div>
+
+                <div class="price-features">
+                    <ul>
+                        <li>Real-time FFT analysis with 1024-16384 point resolution</li>
+                        <li>Built-in WASAPI loopback for analyzing streaming references</li>
+                        <li>Configurable window functions (Hann, Blackman, Hamming)</li>
+                        <li>Peak hold mode for identifying resonances</li>
+                        <li>Linear and logarithmic frequency scales</li>
+                        <li>VST3 plugin for DAW integration + standalone app</li>
+                        <li>Low CPU usage - run alongside your full mix session</li>
+                        <li>Windows 10/11 - optimized for professional workflows</li>
+                    </ul>
+                </div>
+
+                <div class="price-action">
+                    <a href="/#pricing" class="pricing-button">
+                        Learn More About SoundAnalyzer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="brand-xy">XY</span><span class="brand-audio">Audio</span>
+                    </div>
+                    <p>Professional audio analysis tools for Windows</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="/">SoundAnalyzer</a>
+                        <a href="/#features">Features</a>
+                        <a href="/#pricing">Pricing</a>
+                        <a href="/#download">Download</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="/how-to-read-spectrum-analyzer.html">Spectrum Analyzer Guide</a>
+                        <a href="/wasapi-loopback-analyzer.html">WASAPI Guide</a>
+                        <a href="/#faq">FAQ</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="mailto:xyaudiomail@gmail.com">Contact</a>
+                        <a href="mailto:xyaudiomail@gmail.com">Email Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 XY Audio. All rights reserved.</p>
+                <p style="margin-top: 1rem; font-size: 0.85em;">
+                    Sources: <a href="https://www.iconcollective.edu/spectrum-analyzers" style="color: var(--accent-tertiary);">Icon Collective</a>,
+                    <a href="https://blog.landr.com/spectrum-analyzer/" style="color: var(--accent-tertiary);">LANDR Blog</a>,
+                    <a href="https://integraudio.com/spectrum-analyzer-tips/" style="color: var(--accent-tertiary);">Integr Audio</a>,
+                    <a href="https://www.teachmeaudio.com/mixing/techniques/audio-spectrum" style="color: var(--accent-tertiary);">Teach Me Audio</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
