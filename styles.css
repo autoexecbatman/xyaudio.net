@@ -577,7 +577,7 @@ main {
     color: white;
     position: relative;
     overflow: hidden;
-    border-radius: 18px 18px 0 0;
+    border-radius: 20px 20px 0 0;
 }
 
 .price-header::before {
@@ -634,7 +634,6 @@ main {
 }
 
 .price-note::before {
-    content: 'SAVE $54';
     display: block;
     font-weight: 700;
     font-size: 1rem;
@@ -657,7 +656,7 @@ main {
     padding: 0.75rem 0.75rem 0.75rem 2.5rem;
     color: var(--text-primary);
     background: rgba(45, 143, 93, 0.05);
-    border-radius: 8px;
+    border-radius: 12px;
     position: relative;
     font-size: 0.95rem;
     font-weight: 500;
@@ -704,7 +703,7 @@ main {
     background-size: 200% 100%;
     color: white;
     padding: 1rem 3rem;
-    border-radius: 12px;
+    border-radius: 16px;
     text-decoration: none;
     font-weight: 800;
     font-size: 1.1rem;
