@@ -140,8 +140,10 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <span class="brand-xy">XY</span>
-                <span class="brand-audio">Audio</span>
+                <a href="/" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0;">
+                    <span class="brand-xy">XY</span>
+                    <span class="brand-audio">Audio</span>
+                </a>
             </div>
             <div class="nav-links">
                 <a href="#top" class="nav-link">Home</a>
@@ -479,19 +481,30 @@
                         <p>Learn how to capture and analyze system audio with WASAPI loopback. Includes use cases for music production, streaming analysis, DAW monitoring, and professional audio testing.</p>
                         <a href="/wasapi-loopback-analyzer.html" style="color: var(--accent-secondary); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block;">Read Guide →</a>
                     </div>
+                </div>
 
-                    <div class="feature-card">
-                        <div class="feature-icon">🎛️</div>
-                        <h3>VST Spectrum Analyzer Guide</h3>
-                        <p>Complete guide to using VST3 spectrum analyzers in your DAW workflow. DAW integration techniques, professional mixing methods, and VST3 format advantages for FL Studio, Ableton, Cubase, and more.</p>
-                        <a href="/vst-spectrum-analyzer.html" style="color: var(--accent-secondary); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block;">Read Guide →</a>
-                    </div>
+                <!-- More Guides - Collapsible -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="show-more-guides" style="background: transparent; border: 2px solid var(--accent-secondary); color: var(--accent-secondary); padding: 0.75rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        Show More Guides...
+                    </button>
+                </div>
 
-                    <div class="feature-card">
-                        <div class="feature-icon">🖥️</div>
-                        <h3>Standalone Analyzer Guide</h3>
-                        <p>Learn when to use standalone spectrum analyzers outside your DAW. System-wide monitoring, streaming service analysis, reference track comparison, and WASAPI loopback explained for independent audio analysis.</p>
-                        <a href="/standalone-spectrum-analyzer.html" style="color: var(--accent-secondary); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block;">Read Guide →</a>
+                <div id="more-guides" style="display: none; margin-top: 2rem;">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🎛️</div>
+                            <h3>VST Spectrum Analyzer Guide</h3>
+                            <p>Complete guide to using VST3 spectrum analyzers in your DAW workflow. DAW integration techniques, professional mixing methods, and VST3 format advantages for FL Studio, Ableton, Cubase, and more.</p>
+                            <a href="/vst-spectrum-analyzer.html" style="color: var(--accent-secondary); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block;">Read Guide →</a>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">🖥️</div>
+                            <h3>Standalone Analyzer Guide</h3>
+                            <p>Learn when to use standalone spectrum analyzers outside your DAW. System-wide monitoring, streaming service analysis, reference track comparison, and WASAPI loopback explained for independent audio analysis.</p>
+                            <a href="/standalone-spectrum-analyzer.html" style="color: var(--accent-secondary); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block;">Read Guide →</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -328,6 +328,26 @@ document.addEventListener('DOMContentLoaded', function() {
     sections.forEach(section => {
         sectionObserver.observe(section);
     });
+
+    // Show More Guides toggle
+    const showMoreBtn = document.getElementById('show-more-guides');
+    const moreGuides = document.getElementById('more-guides');
+
+    if (showMoreBtn && moreGuides) {
+        showMoreBtn.addEventListener('click', function() {
+            if (moreGuides.style.display === 'none') {
+                moreGuides.style.display = 'block';
+                showMoreBtn.textContent = 'Show Less Guides';
+                showMoreBtn.style.background = 'var(--accent-secondary)';
+                showMoreBtn.style.color = 'white';
+            } else {
+                moreGuides.style.display = 'none';
+                showMoreBtn.textContent = 'Show More Guides...';
+                showMoreBtn.style.background = 'transparent';
+                showMoreBtn.style.color = 'var(--accent-secondary)';
+            }
+        });
+    }
 });
 
 // Utility functions
