@@ -374,8 +374,7 @@ main {
 
 
 /* Professional headers highlighting */
-.title-secondary,
-.section-title {
+.title-secondary {
     color: var(--accent-tertiary) !important;
 }
 
@@ -518,8 +517,29 @@ section.pricing:last-of-type {
 }
 
 .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    border-radius: 12px;
+    color: #d8d8d8;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.feature-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.feature-icon .step-num {
+    font-family: 'Chakra Petch', 'Segoe UI', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    line-height: 1;
 }
 
 .feature-card h3 {
@@ -1021,8 +1041,29 @@ section.pricing:last-of-type {
 
 .feature-check {
     color: var(--success-color);
-    font-weight: 800;
-    font-size: 1.2rem;
+    display: inline-flex;
+}
+
+.feature-check svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
+}
+
+/* Small inline icon in headings (e.g. mistake list) */
+.inline-icon {
+    display: inline-flex;
+    vertical-align: -0.15em;
+    margin-right: 0.4em;
+}
+
+.inline-icon svg {
+    width: 1em;
+    height: 1em;
+}
+
+.inline-icon-no {
+    color: var(--accent-primary);
 }
 
 .download-card {
