@@ -15,75 +15,73 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Enhanced Navbar with parallax and blur on scroll
+    // Navbar scroll states + hero parallax (single rAF-throttled handler;
+    // class toggles only fire on state change so the fixed navbar layer
+    // is never restyled per frame)
     const navbar = document.querySelector('.navbar');
-    let lastScrollY = 0;
-    let isNavbarVisible = true;
-
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-
-        // Enhanced navbar background
-        if (scrollY > 100) {
-            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-            navbar.style.backdropFilter = 'blur(25px) saturate(200%)';
-        } else {
-            navbar.style.background = 'rgba(10, 10, 10, 0.8)';
-            navbar.style.backdropFilter = 'blur(20px) saturate(180%)';
-        }
-
-        // Navbar hide when scrolling down, show only at top
-        if (scrollY > 200) {
-            navbar.style.transform = 'translateY(-100%)';
-            isNavbarVisible = false;
-        } else {
-            navbar.style.transform = 'translateY(0)';
-            isNavbarVisible = true;
-        }
-        lastScrollY = scrollY;
-    });
-
-    // Show navbar when hovering near top of page (desktop only)
-    let wasHiddenByScroll = false;
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-    if (!isTouchDevice) {
-        document.addEventListener('mousemove', (e) => {
-            const mouseY = e.clientY;
-            const scrollY = window.scrollY;
-
-            // Show navbar when mouse is in top 100px
-            if (mouseY < 100 && !isNavbarVisible && scrollY > 200) {
-                navbar.style.transform = 'translateY(0)';
-                wasHiddenByScroll = true;
-            }
-            // Hide navbar when mouse leaves top area and it was hidden by scroll
-            else if (mouseY > 100 && wasHiddenByScroll && scrollY > 200) {
-                navbar.style.transform = 'translateY(-100%)';
-                wasHiddenByScroll = false;
-            }
-        });
-    }
-
-    // Parallax effect for hero section
     const heroSection = document.querySelector('.hero');
     const heroContent = document.querySelector('.hero-content');
     const heroScreenshot = document.querySelector('.hero-screenshot');
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const parallaxSpeed = 0.5;
+    let navSolid = false;
+    let navHidden = false;
+    let peekedByMouse = false;
 
-        if (heroSection && scrolled < window.innerHeight) {
+    function onScroll() {
+        const scrollY = window.scrollY;
+
+        const solid = scrollY > 100;
+        if (solid !== navSolid) {
+            navSolid = solid;
+            navbar.classList.toggle('navbar-solid', solid);
+        }
+
+        const hidden = scrollY > 200;
+        if (hidden !== navHidden) {
+            navHidden = hidden;
+            peekedByMouse = false;
+            navbar.classList.toggle('navbar-hidden', hidden);
+        }
+
+        // Parallax: desktop only — per-frame style writes on the hero
+        // subtree are too expensive on budget phones
+        if (!isTouchDevice && heroSection && scrollY < window.innerHeight) {
+            const parallaxSpeed = 0.5;
             if (heroContent) {
-                heroContent.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
-                heroContent.style.opacity = 1 - (scrolled / 600);
+                heroContent.style.transform = `translateY(${scrollY * parallaxSpeed}px)`;
+                heroContent.style.opacity = 1 - (scrollY / 600);
             }
             if (heroScreenshot) {
-                heroScreenshot.style.transform = `translateY(${scrolled * parallaxSpeed * 0.7}px)`;
+                heroScreenshot.style.transform = `translateY(${scrollY * parallaxSpeed * 0.7}px)`;
             }
         }
-    });
+    }
+
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+            scrollTicking = true;
+            requestAnimationFrame(() => {
+                onScroll();
+                scrollTicking = false;
+            });
+        }
+    }, { passive: true });
+
+    // Show navbar when hovering near top of page (desktop only)
+    if (!isTouchDevice) {
+        document.addEventListener('mousemove', (e) => {
+            if (!navHidden) return;
+            if (e.clientY < 100 && !peekedByMouse) {
+                peekedByMouse = true;
+                navbar.classList.remove('navbar-hidden');
+            } else if (e.clientY > 100 && peekedByMouse) {
+                peekedByMouse = false;
+                navbar.classList.add('navbar-hidden');
+            }
+        }, { passive: true });
+    }
 
 
 
