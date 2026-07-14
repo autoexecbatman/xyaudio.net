@@ -617,6 +617,9 @@ section.pricing:last-of-type {
     background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(20, 20, 20, 0.95));
     /* no backdrop-filter: background is ~95% opaque so the blur was invisible,
        but re-blurring the animated backdrop killed mobile FPS */
+    /* keeps the ::after glow layer inside this card's stacking context
+       (the removed backdrop-filter used to provide one) */
+    isolation: isolate;
     border-radius: 20px;
     overflow: visible;
     border: 2px solid transparent;
@@ -696,20 +699,24 @@ section.pricing:last-of-type {
         inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Sliding gradient as a transformed layer (painted once, GPU moves it) */
+/* Sliding gradient as a transformed layer (painted once, GPU moves it).
+   Kept at 100% height with an oversized background tile — a 200%-tall
+   layer caused texture-memory pressure (black tile flicker) on mobile */
 .price-header::after {
     content: '';
     position: absolute;
-    top: -50%;
+    top: 0;
     left: 0;
     width: 200%;
-    height: 200%;
+    height: 100%;
     z-index: 0;
     pointer-events: none;
     background: linear-gradient(135deg,
         var(--accent-secondary) 0%,
         #2a7a53 50%,
         var(--accent-secondary) 100%);
+    background-size: 100% 200%;
+    background-position: 0 50%;
     animation: gradient-slide 8s ease infinite;
 }
 
@@ -721,13 +728,14 @@ section.pricing:last-of-type {
 .price-header::before {
     content: '';
     position: absolute;
-    top: -50%;
+    top: 0;
     right: -50%;
     width: 200%;
-    height: 200%;
+    height: 100%;
     z-index: 1;
     pointer-events: none;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    /* ellipse sized to match the old circle on the 200%-tall layer */
+    background: radial-gradient(ellipse 50% 200% at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     animation: shimmer 8s linear infinite;
 }
 
