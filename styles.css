@@ -247,34 +247,37 @@ main {
     letter-spacing: -0.02em;
     line-height: 1.2;
     text-shadow:
-        0 0 40px rgba(255, 66, 66, 0.5),
-        0 0 80px rgba(255, 66, 66, 0.3),
-        0 0 120px rgba(255, 66, 66, 0.2);
-    animation: titleGlow 3s ease-in-out infinite alternate;
+        0 0 40px rgba(255, 66, 66, 0.4),
+        0 0 80px rgba(255, 66, 66, 0.2),
+        0 0 120px rgba(255, 66, 66, 0.1);
     filter: brightness(1.1);
     position: relative;
     padding: 0.1em 0;
 }
 
-@keyframes titleGlow {
-    0% {
-        text-shadow:
-            0 0 40px rgba(255, 66, 66, 0.4),
-            0 0 80px rgba(255, 66, 66, 0.2),
-            0 0 120px rgba(255, 66, 66, 0.1);
-    }
-    50% {
-        text-shadow:
-            0 0 60px rgba(255, 66, 66, 0.6),
-            0 0 100px rgba(255, 66, 66, 0.4),
-            0 0 140px rgba(255, 66, 66, 0.2);
-    }
-    100% {
-        text-shadow:
-            0 0 40px rgba(255, 66, 66, 0.4),
-            0 0 80px rgba(255, 66, 66, 0.2),
-            0 0 120px rgba(255, 66, 66, 0.1);
-    }
+/* Pulsing glow as a separate layer: shadows are painted once,
+   only compositor-cheap opacity animates (mobile perf) */
+.title-primary::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    padding: 0.1em 0;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    z-index: -1;
+    pointer-events: none;
+    text-shadow:
+        0 0 60px rgba(255, 66, 66, 0.3),
+        0 0 100px rgba(255, 66, 66, 0.25),
+        0 0 140px rgba(255, 66, 66, 0.15);
+    opacity: 0;
+    animation: glow-fade 3s ease-in-out infinite;
+}
+
+/* Shared compositor-only pulse for pre-painted glow layers */
+@keyframes glow-fade {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }
 
 /* Brand name consistency - SoundAnalyzer in red */
@@ -629,23 +632,22 @@ section.pricing:last-of-type {
         0 0 0 1px rgba(45, 143, 93, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: card-breathe 6s ease-in-out infinite;
 }
 
-@keyframes card-breathe {
-    0%, 100% {
-        box-shadow:
-            0 20px 60px rgba(0, 0, 0, 0.6),
-            0 0 0 1px rgba(45, 143, 93, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
-    50% {
-        box-shadow:
-            0 25px 80px rgba(0, 0, 0, 0.7),
-            0 0 0 1px rgba(45, 143, 93, 0.5),
-            0 0 60px rgba(45, 143, 93, 0.15),
-            inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    }
+/* Breathing shadow painted once on a layer, only opacity animates */
+.pricing-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    z-index: -1;
+    pointer-events: none;
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(45, 143, 93, 0.5),
+        0 0 60px rgba(45, 143, 93, 0.15);
+    opacity: 0;
+    animation: glow-fade 6s ease-in-out infinite;
 }
 
 .pricing-card::before {
@@ -687,11 +689,7 @@ section.pricing:last-of-type {
 }
 
 .price-header {
-    background: linear-gradient(135deg,
-        var(--accent-secondary) 0%,
-        #2a7a53 50%,
-        var(--accent-secondary) 100%);
-    background-size: 200% 200%;
+    background: var(--accent-secondary);
     padding: 2rem 1.5rem;
     text-align: center;
     color: white;
@@ -702,16 +700,28 @@ section.pricing:last-of-type {
         0 0 40px rgba(45, 143, 93, 0.3),
         0 0 80px rgba(45, 143, 93, 0.15),
         inset 0 -1px 0 rgba(255, 255, 255, 0.1);
-    animation: gradient-shift 8s ease infinite;
 }
 
-@keyframes gradient-shift {
-    0%, 100% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
+/* Sliding gradient as a transformed layer (painted once, GPU moves it) */
+.price-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg,
+        var(--accent-secondary) 0%,
+        #2a7a53 50%,
+        var(--accent-secondary) 100%);
+    animation: gradient-slide 8s ease infinite;
+}
+
+@keyframes gradient-slide {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-50%); }
 }
 
 .price-header::before {
@@ -721,6 +731,8 @@ section.pricing:last-of-type {
     right: -50%;
     width: 200%;
     height: 200%;
+    z-index: 1;
+    pointer-events: none;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     animation: shimmer 8s linear infinite;
 }
@@ -728,6 +740,8 @@ section.pricing:last-of-type {
 .price-header h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 .price {
@@ -793,10 +807,10 @@ section.pricing:last-of-type {
 
 @keyframes shimmer-sweep {
     0% {
-        left: -100%;
+        transform: translateX(0);
     }
     100% {
-        left: 100%;
+        transform: translateX(200%);
     }
 }
 
@@ -1410,10 +1424,10 @@ html {
 
 @keyframes shimmer {
     0% {
-        background-position: -1000px 0;
+        transform: translateX(-1000px);
     }
     100% {
-        background-position: 1000px 0;
+        transform: translateX(1000px);
     }
 }
 
@@ -1486,10 +1500,12 @@ html {
 }
 
 /* Animated Grid Background for Features Section */
+/* Oversized by one tile so the transform slide never exposes an edge;
+   painted once, GPU moves it (was background-position = full repaint) */
 .animated-grid {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -50px;
+    left: -50px;
     right: 0;
     bottom: 0;
     background-image:
@@ -1503,10 +1519,10 @@ html {
 
 @keyframes gridMove {
     0% {
-        background-position: 0 0;
+        transform: translate(0, 0);
     }
     100% {
-        background-position: 50px 50px;
+        transform: translate(50px, 50px);
     }
 }
 
@@ -1579,6 +1595,7 @@ html {
     background: var(--accent-tertiary);
     border-radius: 50%;
     box-shadow: 0 0 10px var(--accent-tertiary);
+    bottom: -10%;
     animation: floatUp 15s linear infinite;
     opacity: 0;
 }
@@ -1619,11 +1636,11 @@ html {
     animation-duration: 13s;
 }
 
+/* Rise via transform (was `bottom`, which forces layout every frame) */
 @keyframes floatUp {
     0% {
-        bottom: -10%;
         opacity: 0;
-        transform: translateX(0) scale(1);
+        transform: translate(0, 0) scale(1);
     }
     10% {
         opacity: 1;
@@ -1632,9 +1649,8 @@ html {
         opacity: 1;
     }
     100% {
-        bottom: 110%;
         opacity: 0;
-        transform: translateX(50px) scale(0.5);
+        transform: translate(50px, -110vh) scale(0.5);
     }
 }
 
