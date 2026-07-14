@@ -1763,3 +1763,35 @@ section.features:not(.hero + .features),
     outline: 2px solid var(--accent-tertiary);
     outline-offset: 1px;
 }
+/* Pricing section on touch devices: freeze its continuous animations at
+   a static mid-state. Seven concurrent infinite animations (particles,
+   two 200%-wide header layers, text-scale pulses) overwhelm budget GPUs,
+   and the motion is barely visible on a small screen.
+   (Must stay at end of file to override the animation declarations above.) */
+@media (pointer: coarse) {
+    .particle {
+        display: none;
+    }
+
+    .price-header::before,
+    .price-header::after,
+    .price-amount,
+    .money-back,
+    .pricing-card::before {
+        animation: none;
+    }
+
+    .price-header::after {
+        transform: translateX(-25%); /* rest mid-gradient */
+    }
+
+    .price-note::before {
+        animation: none;
+        opacity: 0;
+    }
+
+    .pricing-card::after {
+        animation: none;
+        opacity: 0.6; /* keep the green glow, painted once */
+    }
+}
